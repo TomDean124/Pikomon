@@ -16,19 +16,19 @@ function _init()
 end
 
 function _update()
-	if btn(⬅️)==true and pxm==0 then
+	if btn(⬅️)==true and pxm==0 and pym==0 then
 		ps=0
 		pxm-=8
 	end
-	if btn(➡️)==true and pxm==0 then
+	if btn(➡️)==true and pxm==0 and pym==0 then
 		ps=1
 		pxm+=8
 	end
-	if btn(⬇️)==true and pym==0 then
+	if btn(⬇️)==true and pym==0 and pxm==0 then
 		ps=2
 		pym+=8
 	end
-	if btn(⬆️)==true and pym==0 then
+	if btn(⬆️)==true and pym==0 and pxm==0 then
 		ps=3
 		pym-=8
 	end
@@ -68,14 +68,14 @@ function _update()
 		pxm-=2
 		px+=2
 		if psc==psm then
-		if pss==2 then
-			pss=0
-		elseif pss==1 then
-			pss=2
-		elseif pss==0 then
-			pss=1
-		end
-		psc=0
+			if pss==2 then
+				pss=0
+			elseif pss==1 then
+				pss=2
+			elseif pss==0 then
+				pss=1
+			end
+			psc=0
 		elseif psc<psm then
 			psc+=1
 		end
@@ -84,14 +84,14 @@ function _update()
 		pxm+=2
 		px-=2
 		if psc==psm then
-		if pss==2 then
-			pss=0
-		elseif pss==1 then
-			pss=2
-		elseif pss==0 then
-			pss=1
-		end
-		psc=0
+			if pss==2 then
+				pss=0
+			elseif pss==1 then
+				pss=2
+			elseif pss==0 then
+				pss=1
+			end
+			psc=0
 		elseif psc<psm then
 			psc+=1
 		end
