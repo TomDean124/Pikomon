@@ -1,6 +1,8 @@
 pico-8 cartridge // http://www.pico-8.com
 version 42
 __lua__
+--a not-ripoff of pokemon by leo, anton, and tom
+
 function _init()
 	
 	px=0
