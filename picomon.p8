@@ -29,7 +29,7 @@ function _draw()
 	spr(ps+4*pss, px, py)
 	camera(px-64, py-64)
 end
-//u2gtuhrrjjb
+
 -->8
 --movement & talking
 function moving()
