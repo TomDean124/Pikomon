@@ -132,6 +132,112 @@ function unpc()
 		
 	end
 end
+-->8
+--types & multipliers--
+
+//add aditional types here into this enum list
+pokemontype = {
+    normal = 0,
+    fire = 1,
+    water = 2,
+    grass = 3,
+    electric = 4,
+    ice = 5,
+    fighting = 6,
+    poison = 7,
+    ground = 8,
+    flying = 9,
+    psychic = 10,
+    bug = 11,
+    rock = 12,
+    ghost = 13,
+    dragon = 14,
+    dark = 15,
+    steel = 16,
+    fairy = 17
+}
+
+//use this to change the types effectiveness
+type_effectiveness = {
+
+// normal type multiplier
+  [pokemontype.normal]={
+  [pokemontype.fire] = 1, 
+  [pokemontype.water] = 1,
+  },
+  
+  //fire type multiplier
+  [pokemontype.fire] = {
+  [pokemontype.water] = 0.5,
+  [pokemontype.normal] = 1,
+  },
+  
+  //water type multiplier
+  [pokemontype.water] = {
+  [pokemontype.fire] = 2,
+  [pokemontype.normal] = 1,
+  },
+  
+}
+function init()
+
+//place created pokemon into this list
+all_pokemon = {}
+end 
+
+
+
+function createpokemon(name, type, hp, atk, def)
+
+return {
+name = name,
+type = type,
+max_hp = hp,
+current_hp = hp,
+atk = atk,
+def = def,
+hasfainted = false
+}
+
+end
+
+//call for all pokemon attacks
+function attack(attacker,defender)
+ local damage = max(1, attacker.atk - defemder.def)
+	local multiplier = attack_multiplier(attacker.type,defender.type)
+	local total_damage = damage*multiplier
+ defender.current_hp = math.max(0, defender.current_hp-total_damage)
+end
+
+function attack_muliplier(atk_type,df_type)
+local multiplier = 1
+
+if type_effectiveness[atk_type] and type_effectiveness[atk_type][df_type] then  
+multiplier = type_effectiveness[atk_type][df_type] 
+end
+return multiplier
+
+end
+
+
+-->8
+--pokemon ai--
+
+
+//checks if a pokemon is dead or not
+function check_pokemon_health()
+for i, p in ipairs(all_pokemon) do
+		if p.current_hp <= 0 then
+		p.hasfainted = true; 
+		end
+	end
+end
+
+function set_sprite(sprite)
+
+end 
+-->8
+--gamemanage
 __gfx__
 00088000000880000008800000088000000880000008800000088000000880000008800000088000000880000008800066dd6d6d6ddddd66d6dd6d66555a5555
 0088880000888800008888000088880000888800008888000088880000888800008888000088880000888800008888006dddddddddddddddddddddd6555a5555
