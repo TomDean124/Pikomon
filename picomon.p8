@@ -16,6 +16,19 @@ function _init()
 end
 
 function _update()
+	moving()
+end
+
+function _draw()
+	cls()
+	map()
+	spr(ps+4*pss, px, py)
+	camera(px-64, py-64)
+end
+//u2gtuhrrjjb
+-->8
+--movement
+function moving()
 	if btn(⬅️)==true and pxm==0 and pym==0 then
 		ps=0
 		pxm-=8
@@ -97,14 +110,6 @@ function _update()
 		end
 	end
 end
-
-function _draw()
-	cls()
-	map()
-	spr(ps+4*pss, px, py)
-	camera(px-64, py-64)
-end
-//u2gtuhrrjjb
 __gfx__
 00088000000880000008800000088000000880000008800000088000000880000008800000088000000880000008800066dd6d6d6ddddd66d6dd6d66555a5555
 0088880000888800008888000088880000888800008888000088880000888800008888000088880000888800008888006dddddddddddddddddddddd6555a5555
