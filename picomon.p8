@@ -5,6 +5,8 @@ __lua__
 
 function _init()
 	
+	inpc()
+	
 	px=0
 	py=0
 	pxm=0
@@ -29,7 +31,7 @@ function _draw()
 end
 //u2gtuhrrjjb
 -->8
---movement
+--movement & talking
 function moving()
 	if btn(⬅️)==true and pxm==0 and pym==0 then
 		ps=0
@@ -110,6 +112,24 @@ function moving()
 		elseif psc<psm then
 			psc+=1
 		end
+	end
+end
+
+function talking()
+	for all in npc() do
+	
+	end
+end
+-->8
+--npcs
+
+function inpc()
+	npc={}
+end
+
+function unpc()
+	for p in all(npc) do
+		
 	end
 end
 __gfx__
