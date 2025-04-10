@@ -32,6 +32,22 @@ end
 
 -->8
 --movement & talking
+
+function walkin()
+	if psc==psm then
+		if pss==2 then
+			pss=0
+		elseif pss==1 then
+			pss=2
+		elseif pss==0 then
+			pss=1
+		end
+		psc=0
+	elseif psc<psm then
+		psc+=1
+	end
+end
+
 function moving()
 	if btn(⬅️)==true and pxm==0 and pym==0 then
 		ps=0
@@ -52,66 +68,22 @@ function moving()
 	if pym>0 then
 		pym-=2
 		py+=2
-		if psc==psm then
-			if pss==2 then
-				pss=0
-			elseif pss==1 then
-				pss=2
-			elseif pss==0 then
-				pss=1
-			end
-			psc=0
-		elseif psc<psm then
-			psc+=1
-		end
+		walkin()
 	end
 	if pym<0 then
 		pym+=2
 		py-=2
-		if psc==psm then
-			if pss==2 then
-				pss=0
-			elseif pss==1 then
-				pss=2
-			elseif pss==0 then
-				pss=1
-			end
-			psc=0
-		elseif psc<psm then
-			psc+=1
-		end
+		walkin()
 	end
 	if pxm>0 then
 		pxm-=2
 		px+=2
-		if psc==psm then
-			if pss==2 then
-				pss=0
-			elseif pss==1 then
-				pss=2
-			elseif pss==0 then
-				pss=1
-			end
-			psc=0
-		elseif psc<psm then
-			psc+=1
-		end
+		walkin()
 	end
 	if pxm<0 then
 		pxm+=2
 		px-=2
-		if psc==psm then
-			if pss==2 then
-				pss=0
-			elseif pss==1 then
-				pss=2
-			elseif pss==0 then
-				pss=1
-			end
-			psc=0
-		elseif psc<psm then
-			psc+=1
-		end
+		walkin()
 	end
 end
 
@@ -124,7 +96,12 @@ end
 --npcs
 
 function inpc()
-	npc={}
+	npc={
+	fighter=figher
+	
+	
+	
+	}
 end
 
 function unpc()
