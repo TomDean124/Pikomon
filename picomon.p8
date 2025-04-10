@@ -7,8 +7,8 @@ function _init()
 	
 	npcs()
 	
-	px=0
-	py=0
+	px=48
+	py=32
 	pxm=0
 	pym=0
 	pm=8
@@ -101,11 +101,10 @@ function npcs()
 	man=1,
 	woman=2,
 	fightm=3,
-	npc={}
-	dad=0
-	man=1
-	woman=2
-	fightm=3
+	dad=0,
+	man=1,
+	woman=2,
+	fightm=3,
 	fightf=4
 	}
 end
@@ -212,14 +211,6 @@ fighting,
 switching
 }
 
-function _init()
-
-end
-
-function _update()
-
-end 
-
 //checks if a pokemon is dead or not
 function check_pokemon_health()
 for i, p in ipairs(all_pokemon) do
@@ -229,11 +220,51 @@ for i, p in ipairs(all_pokemon) do
 	end
 end
 
-function set_animation(sprite,state)
-
-end 
 -->8
 --gamemanage
+-->8
+--animationmanager--
+
+//create a new animation sheet for each new pokimon
+//npc.dad.animations{
+//idle = create_animation({2,10},true)
+//}
+
+animations={
+	idle={
+	frames={},
+	loop=true
+	},
+	move_left={
+	frames={},
+	loop=false
+	},
+	move_right={
+	frames={},
+	loop=false
+	},
+	move_up={
+	frames={},
+	loop=false
+	},
+	move_down={
+	frames={},
+	loop=false
+	},
+	fight={
+	frames={},
+	loop=false
+	},
+}
+
+
+
+local function create_animation(frames,loop)
+return{
+frames = frames,
+loop = loop
+}
+end
 __gfx__
 00088000000880000008800000088000000880000008800000088000000880000008800000088000000880000008800066dd6d6d6ddddd66d6dd6d66555a5555
 0088880000888800008888000088880000888800008888000088880000888800008888000088880000888800008888006dddddddddddddddddddddd6555a5555
