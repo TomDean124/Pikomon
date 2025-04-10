@@ -55,6 +55,9 @@ function walkin()
 	elseif psc<psm then
 		psc+=1
 	end
+	if btn(⬆️)==false and btn(⬇️)==false and btn(⬅️)== false and btn(➡️)==false and pxm==0 and pym==0 then
+		pss=0
+	end
 end
 
 function moving()
@@ -93,9 +96,6 @@ function moving()
 		pxm+=2
 		px-=2
 		walkin()
-	end
-	if btn(⬆️)==false and btn(⬇️)==false and btn(⬅️)== false and btn(➡️)==false and pxm==0 and pym==0 then
-		pss=0
 	end
 end
 
@@ -259,49 +259,6 @@ end
 
 -->8
 --gamemanage
--->8
---animationmanager--
-
-//create a new animation sheet for each new pokimon
-//npc.dad.animations{
-//idle = create_animation({2,10},true)
-//}
-
-animations={
-	idle={
-	frames={},
-	loop=true
-	},
-	move_left={
-	frames={},
-	loop=false
-	},
-	move_right={
-	frames={},
-	loop=false
-	},
-	move_up={
-	frames={},
-	loop=false
-	},
-	move_down={
-	frames={},
-	loop=false
-	},
-	fight={
-	frames={},
-	loop=false
-	},
-}
-
-
-
-local function create_animation(frames,loop)
-return{
-frames = frames,
-loop = loop
-}
-end
 __gfx__
 000004400001d0000001d000000110000001d0000001d0000001d000000110000001d0000001d0000001d0000001100066dd6d6d6ddddd66d6dd6d66555a5555
 004444400044440000444400001ddd00004444000044440000444400001ddd00004444000044440000444400001ddd006dddddddddddddddddddddd6555a5555
