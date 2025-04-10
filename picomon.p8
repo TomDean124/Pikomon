@@ -106,7 +106,22 @@ npctraits={
 }
 
 function npcs()
+<<<<<<< HEAD
 	
+=======
+	npc={
+	dad=0,
+	man=1,
+	woman=2,
+	fightm=3,
+	npc={}
+	dad=0
+	man=1
+	woman=2
+	fightm=3
+	fightf=4
+	}
+>>>>>>> 47be1ebe8fcc89640964de0d7be7df9d2556942f
 end
 
 function unpc()
@@ -162,13 +177,13 @@ type_effectiveness = {
   
   //fire type multiplier
   [pokemontype.fire] = {
-  [pokemontype.water] = 0.5,
+  [pokemontype.water] = 2,
   [pokemontype.normal] = 1,
   },
   
   //water type multiplier
   [pokemontype.water] = {
-  [pokemontype.fire] = 2,
+  [pokemontype.fire] = 0.5,
   [pokemontype.normal] = 1,
   },
   
@@ -217,6 +232,19 @@ end
 -->8
 --pokemon ai--
 
+state={
+idle,
+fighting, 
+switching
+}
+
+function _init()
+
+end
+
+function _update()
+
+end 
 
 //checks if a pokemon is dead or not
 function check_pokemon_health()
@@ -227,7 +255,7 @@ for i, p in ipairs(all_pokemon) do
 	end
 end
 
-function set_sprite(sprite)
+function set_animation(sprite,state)
 
 end 
 -->8
