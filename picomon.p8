@@ -96,20 +96,18 @@ end
 --npcs
 
 function npcs()
-<<<<<<< HEAD
 	npc={
 	dad=0,
 	man=1,
 	woman=2,
 	fightm=3,
-=======
 	npc={}
 	dad=0
 	man=1
 	woman=2
 	fightm=3
->>>>>>> da3d3a3b8b85ce26d08328141bcf7d8a5e2d2ac1
 	fightf=4
+	}
 end
 
 function unpc()
