@@ -207,6 +207,14 @@ fighting,
 switching
 }
 
+function _init()
+
+end
+
+function _update()
+
+end 
+
 //checks if a pokemon is dead or not
 function check_pokemon_health()
 for i, p in ipairs(all_pokemon) do
