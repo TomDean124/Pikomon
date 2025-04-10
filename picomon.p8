@@ -97,10 +97,10 @@ end
 
 function npcs()
 	npc={
-	dad=0
-	man=1
-	woman=2
-	fightm=3
+	dad=0,
+	man=1,
+	woman=2,
+	fightm=3,
 	fightf=4
 	}
 end
