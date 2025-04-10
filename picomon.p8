@@ -14,14 +14,18 @@ function _init()
 	pm=8
 	ps=0
 	pss=0
+	anicycle=1
 	psc=0
-	psm=4
+	psm=1
 	
 end
 
 function _update()
 	moving()
 	talking()
+	if btnp(🅾️) then
+	sfx(00)
+	end
 end
 
 function _draw()
@@ -36,13 +40,17 @@ end
 
 function walkin()
 	if psc==psm then
-		if pss==2 then
-			pss=0
-		elseif pss==1 then
-			pss=2
-		elseif pss==0 then
-			pss=1
-		end
+		if anicycle==4 then
+				anicycle=1
+		elseif anicycle==1 then
+				pss=1
+				anicycle=2
+		elseif anicycle==3 then
+				pss=2
+				anicycle=4
+		elseif anicycle==2 then
+			anicycle=3
+		end		
 		psc=0
 	elseif psc<psm then
 		psc+=1
@@ -86,6 +94,9 @@ function moving()
 		px-=2
 		walkin()
 	end
+	if btn(⬆️)==false and btn(⬇️)==false and btn(⬅️)== false and btn(➡️)==false and pxm==0 and pym==0 then
+		pss=0
+	end
 end
 
 
@@ -106,9 +117,9 @@ npctraits={
 }
 
 function npcs()
-<<<<<<< HEAD
+
 	
-=======
+
 	npc={
 	dad=0,
 	man=1,
@@ -120,7 +131,7 @@ function npcs()
 	fightm=3,
 	fightf=4
 	}
->>>>>>> 47be1ebe8fcc89640964de0d7be7df9d2556942f
+
 end
 
 function unpc()
