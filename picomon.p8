@@ -1,28 +1,7 @@
 pico-8 cartridge // http://www.pico-8.com
 version 42
 __lua__
-function _init()
-	npcs()
-	px=48
-	py=32
-	pxm=0
-	pym=0
-	pm=8
-	ps=0
-	pss=0
-	anicycle=1
-	psc=0
-	psm=1
-	
-end
 
-function _update()
-	moving()
-	talking()
-	if btnp(🅾️) then
-	sfx(00)
-	end
-end
 
 function _draw()
 	cls()
@@ -161,7 +140,7 @@ end
 
 -->8
 --types & multipliers--
-
+all_pokemon = {}
 //add aditional types here into this enum list
 pokemontype = {
     normal = 0,
@@ -182,6 +161,11 @@ pokemontype = {
     dark = 15,
     steel = 16,
     fairy = 17
+}
+
+//create moves here 
+moves={
+water={name="squirt",power=30,type="water"}
 }
 
 //use this to change the types effectiveness
@@ -206,15 +190,8 @@ type_effectiveness = {
   },
   
 }
-function init()
 
-//place created pokemon into this list
-all_pokemon = {}
-end 
-
-
-
-function createpokemon(name, type, hp, atk, def)
+function createpokemon(name,type, hp, atk, def,moves)
 
 return {
 name = name,
@@ -223,6 +200,7 @@ max_hp = hp,
 current_hp = hp,
 atk = atk,
 def = def,
+moves = {moves},
 hasfainted = false
 }
 
@@ -250,11 +228,10 @@ end
 -->8
 --pokemon ai--
 
-state={
-idle,
-fighting, 
-switching
-}
+current_turn = 1
+
+turn = {1,2}
+
 
 //checks if a pokemon is dead or not
 function check_pokemon_health()
@@ -267,7 +244,48 @@ end
 
 
 -->8
---gamemanage
+function _init()
+	npcs()
+	px=48
+	py=32
+	pxm=0
+	pym=0
+	pm=8
+	ps=0
+	pss=0
+	anicycle=1
+	psc=0
+	psm=1
+	
+	squirtle = createpokemon(
+	"squirtle",
+	pokemontype.water,
+	100,
+	75,
+	100,
+	moves.water
+)
+	whale = createpokemon(
+	"wale",
+	pokemontype.water,
+	100,
+	75,
+	100,
+	moves.water
+)
+
+//place created pokemon into this list
+all_pokemon={squirtle,whale}
+	
+end
+
+function _update()
+	moving()
+	talking()
+	if btnp(🅾️) then
+	sfx(00)
+	end
+end--gamemanage
 -->8
 --sfx manager--
 
@@ -297,6 +315,44 @@ else
 sfx(clip)
 end
 end
+
+-->8
+--generateui--
+
+//work in progress
+
+function generate_menu_ui()
+local current = 0
+if btnp(2) then current = (current-1) %# squirtle.moves end 
+if btnp(3) then current = (current+1) %# squirtle.moves end
+end
+
+function draw_party_ui()
+  local margin_x = 11
+  local margin_y = 17
+  local spacing = 2
+
+  local available_width = 128 - margin_x * 2
+  local available_height = 128 - margin_y * 2
+
+  local cols = 3 
+  local box_width = flr((available_width - (cols - 1) * spacing) / cols)
+  local box_height = 20 
+
+  for i=1, #all_pokemon do
+    local col = (i - 1) % cols
+    local row = flr((i - 1) / cols)
+
+    local x = margin_x + col * (box_width + spacing)
+    local y = margin_y + row * (box_height + spacing)
+
+    rectfill(x, y, x + box_width, y + box_height, 6)
+ local text_width = #all_pokemon[i].name * 4
+ local text_height = #all_pokemon[i].name * 4 
+    print(all_pokemon[i].name, x+(box_width/text_width)/2, y, 7)
+  end
+end
+
 
 __gfx__
 00088000000880000008800000088000000880000008800000088000000880000008800000088000000880000008800066dd6d6d6ddddd66d6dd6d66555a5555
