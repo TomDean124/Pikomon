@@ -311,7 +311,7 @@ end
 
 -->8
 --sfx manager--
-
+hihi
 current_looping_sound = 0;
 
 function play_sound(clip,loop)
