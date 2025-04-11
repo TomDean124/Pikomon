@@ -1,8 +1,6 @@
 pico-8 cartridge // http://www.pico-8.com
 version 42
 __lua__
---a not-ripoff of pokemon by leo, anton, and tom
-
 function _init()
 	
 	npcs()
@@ -30,9 +28,9 @@ function _draw()
 	camera(px-64, py-64)
 end
 
+
 -->8
 --movement & talking
-
 function walkin()
 	if psc==psm then
 		if pss==2 then
@@ -96,25 +94,20 @@ end
 --npcs
 
 function npcs()
-	npc={
-	dad=0,
-	man=1,
-	woman=2,
-	fightm=3,
-	npc={}
+ npc={}
 	dad=0
 	man=1
 	woman=2
 	fightm=3
 	fightf=4
-	}
 end
 
 function unpc()
-	for p in all(npc) do
-		
-	end
+for p in all(npc) do
+
+end 
 end
+
 -->8
 --types & multipliers--
 
