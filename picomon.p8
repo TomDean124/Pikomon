@@ -1,33 +1,6 @@
 pico-8 cartridge // http://www.pico-8.com
 version 42
 __lua__
-<<<<<<< HEAD
-=======
-function _init()
-	npcs()
-	px=48
-	py=32//starting spots
-	pxm=0
-	pym=0//direction the player wants to go
-	ps=0//player sprite
-	pss=0//sprite state: for animations
-	anicycle=1
-	psc=0
-	psm=1//timer for walking
-	
-	wall=0//this is for checking if a sprite has the ability to be walked through (the floor can be walked through, npcs, walls, windows, roofs, cannot).
-	
-end
->>>>>>> 300e86b2203d6dd94e0a5d77cf12caa0e5d11861
-
-
-function _draw()
-	cls()
-	map()
-	spr(ps+4*pss, px, py)
-	camera(px-64, py-64)
-	
-end
 
 
 -->8
@@ -75,7 +48,7 @@ function moving()
 		pxm+=8
 		play_sound(1,true)
 	end
-	if btn(⬇️)==true and pym==0 and pxm==0 then
+	if btn(⬇️)==true and pym==0 and pxm==0 and canmove(px,py) then
 		ps=2
 		pym+=8
 		play_sound(1,true)
@@ -278,6 +251,8 @@ end
 
 
 -->8
+--gamemanager--
+
 function _init()
 	npcs()
 	px=48
@@ -290,6 +265,12 @@ function _init()
 	anicycle=1
 	psc=0
 	psm=1
+	pss=0//sprite state: for animations
+	anicycle=1
+	psc=0
+	psm=1//timer for walking
+	
+	wall=0//this is for checking if a sprite has the ability to be walked through (the floor can be walked through, npcs, walls, windows, roofs, cannot).
 	
 	squirtle = createpokemon(
 	"squirtle",
@@ -319,7 +300,15 @@ function _update()
 	if btnp(🅾️) then
 	sfx(00)
 	end
-end--gamemanage
+end
+
+function _draw()
+	cls()
+	map()
+	spr(ps+4*pss, px, py)
+	camera(px-64, py-64)
+end
+
 -->8
 --sfx manager--
 
