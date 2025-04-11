@@ -311,7 +311,7 @@ end
 
 -->8
 --sfx manager--
-hihi
+//just testing this auto commit script
 current_looping_sound = 0;
 
 function play_sound(clip,loop)
