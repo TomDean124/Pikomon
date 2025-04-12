@@ -241,27 +241,24 @@ turn = {1,2}
 spawned_pokemon = {}
 
 
-function spawn_pokemon()
-if btnp(4) then
-local poke = all_pokemon[index]
-add(spawned_pokemon, {
-sprite = poke.sprite,
-x = flr(px/8)*8,
-y = flr(py/8)*8
-})
-end
+function is_pokemon_spawned(poke) 
+for p in all(spawned_pokemon) do 
+if p.sprite == poke.sprite and p.x == poke.x and p.y == poke.y then 
+return true 
+end 
+end 
+return false 
+end 
+function spawn_pokemon() 
+if btnp(4) then 
+local poke = all_pokemon[index] 
+if is_pokemon_spawned(poke) then 
+return 
+end 
+add(spawned_pokemon, {sprite = poke.sprite, x = flr(px/8)*8, y = flr(py/8)*8}) 
+end 
 end
 
-
-
-//checks if a pokemon is dead or not
-function check_pokemon_health()
-for i, p in ipairs(all_pokemon) do
-		if p.current_hp <= 0 then
-			p.hasfainted = true; 
-		end
-	end
-end
 
 
 -->8
@@ -294,7 +291,7 @@ function _init()
 	75,
 	100,
 	moves.water,
-	2
+	2 // sets the sprite for pokemon
 )
 	whale = createpokemon(
 	"wale",
@@ -368,7 +365,6 @@ end
 -->8
 --generateui--
 
-//work in progress
 
 function generate_menu_ui()
 local current = 0
@@ -376,6 +372,7 @@ if btnp(1) then current = (current-1) %# squirtle.moves end
 if btnp(5) then current = (current+1) %# squirtle.moves end
 end
 
+//the part ui contains the pokemon sprite and name and allows player to scroll through them
 function draw_party_ui()
  if btnp(5) then
   play_sound(4,true)
@@ -393,9 +390,9 @@ end
  local boxwidth = flr(textlength + buffer + spritesize)
  local boxheight = flr(spritesize + buffer)
 
- rectfill(x, y, x + boxwidth, y + boxheight, 5)
+ rectfill(x, y, x + boxwidth, y + boxheight, 2)
  rectfill(x+1, y+1, x+spritesize, y+spritesize, 7)
- print(poke.name, x + spritesize + 3, y + 2, 0)
+ print(poke.name, x + spritesize + 3, y + 3, 0)
 
 	spr(poke.sprite, x + 1, y + 1) 
 end
